@@ -7,26 +7,17 @@ use Illuminate\Http\Request;
 
 class AreaController extends Controller
 {
-    public function index()
-    {
-        return redirect()->route('areas.create');
-    }
-
     public function create()
     {
-        $areas = Area::latest()->get();
+        $areas = Area::all();
 
         return view('Area.create', compact('areas'));
     }
 
     public function store(Request $request)
     {
-        $area = new Area();
+        Area::create($request->all());
 
-        $area->name = $request->name;
-
-        $area->save();
-
-        return $area;
+        return redirect()->route('areas.create')->with('success', 'Área registrada correctamente.');
     }
 }

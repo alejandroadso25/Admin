@@ -20,3 +20,6 @@ Route::post('training-centers', [TrainingCenterController::class, 'store'])->nam
 
 Route::get('computers/create', [ComputerController::class, 'create'])->name('computers.create');
 Route::post('computers', [ComputerController::class, 'store'])->name('computers.store');
+
+Route::get('courses/create', [CourseController::class, 'create'])->name('courses.create');
+Route::post('courses', [CourseController::class, 'store'])->name('courses.store');

@@ -7,27 +7,17 @@ use Illuminate\Http\Request;
 
 class TrainingCenterController extends Controller
 {
-    public function index()
-    {
-        return redirect()->route('training-centers.create');
-    }
-
     public function create()
     {
-        $trainingCenters = Training_Center::latest()->get();
+        $trainingCenters = Training_Center::all();
 
         return view('Training_Center.create', compact('trainingCenters'));
     }
 
     public function store(Request $request)
     {
-        $center = new Training_Center();
+        Training_Center::create($request->all());
 
-        $center->name = $request->name;
-        $center->location = $request->location;
-
-        $center->save();
-
-        return $center;
+        return redirect()->route('training-centers.create')->with('success', 'Centro de formación registrado correctamente.');
     }
 }

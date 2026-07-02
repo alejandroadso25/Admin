@@ -9,17 +9,21 @@ class Training_Center extends Model
 {
     use HasFactory;
 
-    protected $table = 'training__centers';
+    protected $fillable = [
+        'name',
+        'location'
+    ];
 
-    protected $fillable = ['name', 'location'];
 
-    public function teachers()
-    {
-        return $this->hasMany(Teacher::class, 'training_center_id');
+    public function areas(){
+        return $this->hasMany('App\Models\Area');
     }
 
-    public function courses()
-    {
-        return $this->hasMany(Course::class, 'training_center_id');
+    public function courses(){
+        return $this->hasMany('App\Models\Course');
     }
-}
+
+    public function teachers(){
+        return $this->hasMany('App\Models\Teacher');
+    }
+} 

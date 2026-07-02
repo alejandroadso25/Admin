@@ -7,27 +7,15 @@ use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
-    public function index()
-    {
-        return redirect()->route('computers.create');
-    }
-
     public function create()
     {
-        $computers = Computer::latest()->get();
-
-        return view('Computer.create', compact('computers'));
+        return view('Computer.create');
     }
 
     public function store(Request $request)
     {
-        $computer = new Computer();
+        $computer = Computer::create($request->all());
 
-        $computer->number = $request->number;
-        $computer->brand = $request->brand;
-
-        $computer->save();
-
-        return $computer;
+        return redirect()->route('computers.create')->with('success', 'Computador registrado correctamente.');
     }
 }
