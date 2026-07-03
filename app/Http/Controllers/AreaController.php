@@ -16,8 +16,8 @@ class AreaController extends Controller
 
     public function store(Request $request)
     {
-        Area::create($request->all());
+        $area = Area::create($request->all());
 
-        return redirect()->route('areas.create')->with('success', 'Área registrada correctamente.');
+        return redirect()->route('areas.create')->with('record', $area->toJson(JSON_PRETTY_PRINT));
     }
 }

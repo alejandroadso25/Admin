@@ -23,3 +23,9 @@ Route::post('computers', [ComputerController::class, 'store'])->name('computers.
 
 Route::get('courses/create', [CourseController::class, 'create'])->name('courses.create');
 Route::post('courses', [CourseController::class, 'store'])->name('courses.store');
+
+Route::get('teachers/create', [TeacherController::class, 'create'])->name('teachers.create');
+Route::post('teachers', [TeacherController::class, 'store'])->name('teachers.store');
+
+Route::get('apprentices/create', [ApprenticeController::class, 'create'])->name('apprentices.create');
+Route::post('apprentices', [ApprenticeController::class, 'store'])->name('apprentices.store');

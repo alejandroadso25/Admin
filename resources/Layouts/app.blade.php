@@ -6,9 +6,8 @@
     <title>Admin Sena</title>
 </head>
 <body>
+      
 
-    @include('includes.Navbar')
-    @yield('content')
     
     
 </body>

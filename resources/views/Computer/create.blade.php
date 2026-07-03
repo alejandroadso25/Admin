@@ -18,23 +18,15 @@
         <button type="submit">Registrar</button>
     </form>
 
-    @if (session('success'))
-        <div>
-            {{ session('success') }}
-        </div>
-    @endif
+    <pre>{{ session('record') }}</pre>
 
     <h2>Computadores registrados</h2>
-    @if($computers->isEmpty())
-        <p>No hay computadores registrados.</p>
-    @else
-        <ul>
-            @foreach ($computers as $computer)
-                <li>
-                    Número: {{ $computer->number }}, Marca: {{ $computer->brand }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
+    <ul>
+        @foreach ($computers as $computer)
+            <li>
+                Número: {{ $computer->number }}, Marca: {{ $computer->brand }}
+            </li>
+        @endforeach
+    </ul>
 </body>
 </html>

@@ -20,23 +20,15 @@
         <a href="{{ url('/') }}">Volver</a>
     </form>
 
-    @if (session('success'))
-        <div>
-            {{ session('success') }}
-        </div>
-    @endif
+    <pre>{{ session('record') }}</pre>
 
     <h2>Centros de formación registrados</h2>
-    @if($trainingCenters->isEmpty())
-        <p>No hay centros de formación registrados.</p>
-    @else
-        <ul>
-            @foreach ($trainingCenters as $center)
-                <li>
-                    <strong>{{ $center->name }}</strong> - {{ $center->location }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
+    <ul>
+        @foreach ($trainingCenters as $center)
+            <li>
+                <strong>{{ $center->name }}</strong> - {{ $center->location }}
+            </li>
+        @endforeach
+    </ul>
 </body>
 </html>

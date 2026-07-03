@@ -17,21 +17,13 @@
         <a href="{{ url('/') }}">Volver</a>
     </form>
 
-    @if (session('success'))
-        <div>
-            {{ session('success') }}
-        </div>
-    @endif
+    <pre>{{ session('record') }}</pre>
 
     <h2>Áreas registradas</h2>
-    @if($areas->isEmpty())
-        <p>No hay áreas registradas.</p>
-    @else
-        <ul>
-            @foreach ($areas as $area)
-                <li>{{ $area->name }}</li>
-            @endforeach
-        </ul>
-    @endif
+    <ul>
+        @foreach ($areas as $area)
+            <li>{{ $area->name }}</li>
+        @endforeach
+    </ul>
 </body>
 </html>

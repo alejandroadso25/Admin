@@ -13,14 +13,15 @@ class CourseController extends Controller
     {
         $areas = Area::all();
         $training_centers = Training_Center::all();
+        $courses = Course::all();
 
-        return view('Course.create', compact('areas', 'training_centers'));
+        return view('Course.create', compact('areas', 'training_centers', 'courses'));
     }
 
     public function store(Request $request)
     {
-        Course::create($request->all());
+        $course = Course::create($request->all());
 
-        return redirect()->route('courses.create')->with('success', 'Curso registrado correctamente.');
+        return redirect()->route('courses.create')->with('record', $course->toJson(JSON_PRETTY_PRINT));
     }
 }

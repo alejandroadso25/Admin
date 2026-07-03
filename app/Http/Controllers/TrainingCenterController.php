@@ -16,8 +16,8 @@ class TrainingCenterController extends Controller
 
     public function store(Request $request)
     {
-        Training_Center::create($request->all());
+        $trainingCenter = Training_Center::create($request->all());
 
-        return redirect()->route('training-centers.create')->with('success', 'Centro de formación registrado correctamente.');
+        return redirect()->route('training-centers.create')->with('record', $trainingCenter->toJson(JSON_PRETTY_PRINT));
     }
 }
