@@ -1,51 +1,63 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Aprendiz</title>
-</head>
-<body>
-    <form action="{{ route('apprentices.store') }}" method="POST">
-        <h1>Registrar Aprendiz</h1>
-        @csrf
+@extends('layouts.app')
 
-        <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required>
+@section('title', 'Registrar Aprendiz')
 
-        <label for="email">Correo</label>
-        <input type="email" id="email" name="email" required>
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('apprentices.store') }}" method="POST" class="row g-3">
+                <h1 class="h4">Registrar Aprendiz</h1>
+                @csrf
 
-        <label for="cell_number">Número celular</label>
-        <input type="text" id="cell_number" name="cell_number" required>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
 
-        <label for="course_id">Curso</label>
-        <select id="course_id" name="course_id" required>
-            <option value="">Seleccionar curso</option>
-            @foreach ($courses as $course)
-                <option value="{{ $course->id }}">{{ $course->course_number }} - {{ $course->day }}</option>
-            @endforeach
-        </select>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Correo</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
 
-        <label for="computer_id">Computador</label>
-        <select id="computer_id" name="computer_id" required>
-            <option value="">Seleccionar computador</option>
-            @foreach ($computers as $computer)
-                <option value="{{ $computer->id }}">{{ $computer->number }} - {{ $computer->brand }}</option>
-            @endforeach
-        </select>
+                <div class="col-md-6">
+                    <label for="cell_number" class="form-label">Número celular</label>
+                    <input type="text" id="cell_number" name="cell_number" class="form-control" required>
+                </div>
 
-        <button type="submit">Guardar</button>
-        <a href="{{ url('/') }}">Volver</a>
-    </form>
+                <div class="col-md-6">
+                    <label for="course_id" class="form-label">Curso</label>
+                    <select id="course_id" name="course_id" class="form-select" required>
+                        <option value="">Seleccionar curso</option>
+                        @foreach ($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->course_number }} - {{ $course->day }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-    <pre>{{ session('record') }}</pre>
+                <div class="col-md-6">
+                    <label for="computer_id" class="form-label">Computador</label>
+                    <select id="computer_id" name="computer_id" class="form-select" required>
+                        <option value="">Seleccionar computador</option>
+                        @foreach ($computers as $computer)
+                            <option value="{{ $computer->id }}">{{ $computer->number }} - {{ $computer->brand }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-    <h2>Aprendices registrados</h2>
-    <ul>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ url('/') }}" class="btn btn-secondary ms-2">Volver</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <pre class="mt-3 bg-light p-3">{{ session('record') }}</pre>
+
+    <h2 class="mt-4">Aprendices registrados</h2>
+    <ul class="list-group">
         @foreach ($apprentices as $apprentice)
-            <li>ID: {{ $apprentice->id }} - Nombre: {{ $apprentice->name }} - Email: {{ $apprentice->email }} - Celular: {{ $apprentice->cell_number }} - Curso_id: {{ $apprentice->course_id }} - Computador_id: {{ $apprentice->computer_id }}</li>
+            <li class="list-group-item">ID: {{ $apprentice->id }} - Nombre: {{ $apprentice->name }} - Email: {{ $apprentice->email }} - Celular: {{ $apprentice->cell_number }} - Curso_id: {{ $apprentice->course_id }} - Computador_id: {{ $apprentice->computer_id }}</li>
         @endforeach
     </ul>
-</body>
-</html>
+@endsection

@@ -1,34 +1,40 @@
-﻿<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Centro de Formación</title>
-</head>
-<body>
-    <form action="{{ route('training-centers.store') }}" method="POST">
-        <h1>Registrar Centro de Formación</h1>
-        @csrf
+﻿@extends('layouts.app')
 
-        <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required>
+@section('title', 'Registrar Centro de Formación')
 
-        <label for="location">Ubicación</label>
-        <input type="text" id="location" name="location" required>
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('training-centers.store') }}" method="POST" class="row g-3">
+                <h1 class="h4">Registrar Centro de Formación</h1>
+                @csrf
 
-        <button type="submit">Guardar</button>
-        <a href="{{ url('/') }}">Volver</a>
-    </form>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
 
-    <pre>{{ session('record') }}</pre>
+                <div class="col-md-6">
+                    <label for="location" class="form-label">Ubicación</label>
+                    <input type="text" id="location" name="location" class="form-control" required>
+                </div>
 
-    <h2>Centros de formación registrados</h2>
-    <ul>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ url('/') }}" class="btn btn-secondary ms-2">Volver</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <pre class="mt-3 bg-light p-3">{{ session('record') }}</pre>
+
+    <h2 class="mt-4">Centros de formación registrados</h2>
+    <ul class="list-group">
         @foreach ($trainingCenters as $center)
-            <li>
+            <li class="list-group-item">
                 <strong>{{ $center->name }}</strong> - {{ $center->location }}
             </li>
         @endforeach
     </ul>
-</body>
-</html>
+@endsection
