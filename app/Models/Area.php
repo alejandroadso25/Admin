@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
+use MongoDB\Laravel\Eloquent\Model; //conexión con MongoDB
 class Area extends Model
 {
     use HasFactory;
+    protected $connection = 'mongodb'; // Especifica la conexión a MongoDB
 
     protected $fillable = [
         'name'

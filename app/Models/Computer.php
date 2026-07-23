@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Computer extends Model
 {
     use HasFactory;
+
+    protected $connection = 'mongodb';
 
     protected $fillable = [
         'number',
@@ -16,6 +18,6 @@ class Computer extends Model
 
     public function apprentices()
     {
-        return $this->hasMany('App\Models\Apprentice');
+        return $this->hasMany(Apprentice::class);
     }
 }
