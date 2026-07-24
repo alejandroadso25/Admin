@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
+    public function index()
+    {
+        $computer = Computer::all();
+
+        return view('Computer.index', compact('computer'));
+    }
+
     public function create()
     {
         $computers = Computer::all();

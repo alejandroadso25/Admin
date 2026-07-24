@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class AreaController extends Controller
 {
+    public function index()
+    {
+        $areas = Area::all();
+
+        return view('Area.index', compact('areas'));
+    }
+
     public function create()
     {
         $areas = Area::all();

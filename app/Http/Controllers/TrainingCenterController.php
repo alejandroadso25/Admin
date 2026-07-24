@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class TrainingCenterController extends Controller
 {
+    public function index()
+    {
+        $trainingCenters = Training_Center::all();
+
+        return view('Training_Center.index', compact('trainingCenters'));
+    }
+
     public function create()
     {
         $trainingCenters = Training_Center::all();

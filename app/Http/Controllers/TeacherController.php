@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+    public function index()
+    {
+        $teachers = Teacher::all();
+
+        return view('Teacher.index', compact('teachers'));
+    }
+
     public function create()
     {
         $areas = Area::all();
